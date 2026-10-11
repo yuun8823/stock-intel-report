@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>株式デイリーレポート</title>
+<style>
+:root{color-scheme:light dark;
+ --bg:#f6f5f0;--card:#fffefb;--text:#26251f;--muted:#716f64;--line:#e8e6dc;
+ --chip:#efede4;--chip-text:#716f64;
+ --buy:#0e6e55;--buy-soft:#e3f2ea;--sell:#a8322d;--sell-soft:#f9e9e7}
+@media(prefers-color-scheme:dark){:root{
+ --bg:#1b1b18;--card:#252521;--text:#eceade;--muted:#a3a093;--line:#39382f;
+ --chip:#32312a;--chip-text:#a3a093;
+ --buy:#63c9a4;--buy-soft:#123a2e;--sell:#f0948c;--sell-soft:#44201c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.6;
+ font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",system-ui,sans-serif;
+ -webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:22px 16px 48px}
+header h1{font-size:19px;font-weight:600;margin:0;letter-spacing:.02em}
+.meta{color:var(--muted);font-size:12px;margin:4px 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+ padding:16px 16px 10px;margin:0 0 14px}
+.ai{padding-bottom:14px}
+.ai h2{font-size:13px;color:var(--muted);font-weight:600;margin:0 0 4px}
+.ai p{font-size:13.5px;margin:0 0 14px}
+.ai p:last-child{margin-bottom:2px}
+.sec-h{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+.sec-h h2{font-size:16px;font-weight:600;margin:0}
+.sec-h .n{font-size:11.5px;color:var(--muted)}
+.buy .sec-h h2{color:var(--buy)}
+.sell .sec-h h2{color:var(--sell)}
+.row{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.rank{flex:none;width:26px;height:26px;margin-top:1px;border-radius:8px;
+ background:var(--chip);color:var(--chip-text);font-size:12.5px;font-weight:600;
+ display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.buy .top .rank{background:var(--buy-soft);color:var(--buy)}
+.sell .top .rank{background:var(--sell-soft);color:var(--sell)}
+.main{flex:1;min-width:0}
+.nm{font-size:14.5px;font-weight:600;line-height:1.35;
+ display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.tk{font-size:11px;color:var(--muted);font-weight:400;font-variant-numeric:tabular-nums}
+.tag{font-size:10.5px;font-weight:500;padding:1.5px 7px;border-radius:999px;
+ background:var(--chip);color:var(--chip-text)}
+.tag.up{background:var(--buy-soft);color:var(--buy)}
+.tag.down{background:var(--sell-soft);color:var(--sell)}
+.stats{font-size:12px;color:var(--muted);margin-top:3px;
+ display:flex;flex-wrap:wrap;gap:2px 12px;font-variant-numeric:tabular-nums}
+.stats b{font-weight:600;color:var(--text)}
+.stats .lo b{color:var(--buy)}
+.stats .hi b{color:var(--sell)}
+.bar{height:3px;border-radius:2px;background:var(--chip);margin-top:7px;overflow:hidden}
+.bar i{display:block;height:100%}
+.buy .bar i{background:var(--buy)}
+.sell .bar i{background:var(--sell)}
+.score{flex:none;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;
+ padding:3px 9px;border-radius:8px;margin-top:4px}
+.buy .score{background:var(--buy-soft);color:var(--buy)}
+.sell .score{background:var(--sell-soft);color:var(--sell)}
+.empty{color:var(--muted);font-size:13px;padding:10px 0 14px}
+.disc{color:var(--muted);font-size:11px;line-height:1.8;margin-top:20px}
+@media(min-width:880px){
+ .wrap{max-width:1000px}
+ .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+ .cols .card{margin:0}}
+</style></head><body><div class="wrap">
+<header><h1>株式デイリーレポート</h1><p class="meta">更新 2026年10月10日 23:56 JST・株価は 2026-10-09 終値基準・対象 225銘柄・毎営業日 大引け後に自動更新</p></header>
+
+<div class="cols">
+<section class='card buy'><div class='sec-h'><h2>買い目候補</h2><span class='n'>TOP10</span></div><div class='row top'><span class='rank'>1</span><div class='main'><div class='nm'>クレディセゾン<span class='tk'>8253.T</span></div><div class='stats'><span>終値 <b>4,237</b>円</span><span class=''>RSI <b>32</b></span><span>25日乖離 <b>-6.5%</b></span><span>60日 <b>-7.5%</b></span></div><div class='bar'><i style='width:100%'></i></div></div><span class='score'>+3.34</span></div><div class='row top'><span class='rank'>2</span><div class='main'><div class='nm'>東急不動産ホールディングス<span class='tk'>3289.T</span><span class='tag up'>売られすぎ</span></div><div class='stats'><span>終値 <b>1,185</b>円</span><span class='lo'>RSI <b>30</b></span><span>25日乖離 <b>-4.8%</b></span><span>60日 <b>-7.0%</b></span></div><div class='bar'><i style='width:92%'></i></div></div><span class='score'>+3.06</span></div><div class='row top'><span class='rank'>3</span><div class='main'><div class='nm'>日本製鉄<span class='tk'>5401.T</span></div><div class='stats'><span>終値 <b>629</b>円</span><span class=''>RSI <b>38</b></span><span>25日乖離 <b>-5.2%</b></span><span>60日 <b>+16.4%</b></span></div><div class='bar'><i style='width:84%'></i></div></div><span class='score'>+2.80</span></div><div class='row'><span class='rank'>4</span><div class='main'><div class='nm'>住友金属鉱山<span class='tk'>5713.T</span></div><div class='stats'><span>終値 <b>9,406</b>円</span><span class=''>RSI <b>46</b></span><span>25日乖離 <b>-2.5%</b></span><span>60日 <b>+30.7%</b></span></div><div class='bar'><i style='width:82%'></i></div></div><span class='score'>+2.75</span></div><div class='row'><span class='rank'>5</span><div class='main'><div class='nm'>資生堂<span class='tk'>4911.T</span></div><div class='stats'><span>終値 <b>3,286</b>円</span><span class=''>RSI <b>43</b></span><span>25日乖離 <b>-3.4%</b></span><span>60日 <b>+19.3%</b></span></div><div class='bar'><i style='width:80%'></i></div></div><span class='score'>+2.66</span></div><div class='row'><span class='rank'>6</span><div class='main'><div class='nm'>双日<span class='tk'>2768.T</span></div><div class='stats'><span>終値 <b>5,340</b>円</span><span class=''>RSI <b>38</b></span><span>25日乖離 <b>-5.0%</b></span><span>60日 <b>+6.4%</b></span></div><div class='bar'><i style='width:76%'></i></div></div><span class='score'>+2.54</span></div><div class='row'><span class='rank'>7</span><div class='main'><div class='nm'>塩野義製薬<span class='tk'>4507.T</span></div><div class='stats'><span>終値 <b>2,744</b>円</span><span class=''>RSI <b>42</b></span><span>25日乖離 <b>-3.4%</b></span><span>60日 <b>-1.8%</b></span></div><div class='bar'><i style='width:75%'></i></div></div><span class='score'>+2.50</span></div><div class='row'><span class='rank'>8</span><div class='main'><div class='nm'>出光興産<span class='tk'>5019.T</span></div><div class='stats'><span>終値 <b>1,504</b>円</span><span class=''>RSI <b>46</b></span><span>25日乖離 <b>-4.1%</b></span><span>60日 <b>+22.7%</b></span></div><div class='bar'><i style='width:74%'></i></div></div><span class='score'>+2.48</span></div><div class='row'><span class='rank'>9</span><div class='main'><div class='nm'>ヤマハ発動機<span class='tk'>7272.T</span></div><div class='stats'><span>終値 <b>1,811</b>円</span><span class=''>RSI <b>52</b></span><span>25日乖離 <b>+0.3%</b></span><span>60日 <b>+45.6%</b></span></div><div class='bar'><i style='width:73%'></i></div></div><span class='score'>+2.42</span></div><div class='row'><span class='rank'>10</span><div class='main'><div class='nm'>ふくおかフィナンシャルグループ<span class='tk'>8354.T</span></div><div class='stats'><span>終値 <b>7,453</b>円</span><span class=''>RSI <b>43</b></span><span>25日乖離 <b>-3.6%</b></span><span>60日 <b>+3.7%</b></span></div><div class='bar'><i style='width:69%'></i></div></div><span class='score'>+2.30</span></div></section>
+<section class='card sell'><div class='sec-h'><h2>売り目候補</h2><span class='n'>TOP10</span></div><div class='row top'><span class='rank'>1</span><div class='main'><div class='nm'>SCREENホールディングス<span class='tk'>7735.T</span><span class='tag down'>買われすぎ</span></div><div class='stats'><span>終値 <b>16,545</b>円</span><span class='hi'>RSI <b>72</b></span><span>25日乖離 <b>+19.2%</b></span><span>60日 <b>-8.4%</b></span></div><div class='bar'><i style='width:100%'></i></div></div><span class='score'>-6.14</span></div><div class='row top'><span class='rank'>2</span><div class='main'><div class='nm'>太陽誘電<span class='tk'>6976.T</span></div><div class='stats'><span>終値 <b>11,135</b>円</span><span class=''>RSI <b>62</b></span><span>25日乖離 <b>+16.2%</b></span><span>60日 <b>-24.0%</b></span></div><div class='bar'><i style='width:99%'></i></div></div><span class='score'>-6.07</span></div><div class='row top'><span class='rank'>3</span><div class='main'><div class='nm'>レーザーテック<span class='tk'>6920.T</span><span class='tag down'>買われすぎ</span></div><div class='stats'><span>終値 <b>48,560</b>円</span><span class='hi'>RSI <b>77</b></span><span>25日乖離 <b>+23.1%</b></span><span>60日 <b>+9.4%</b></span></div><div class='bar'><i style='width:98%'></i></div></div><span class='score'>-6.05</span></div><div class='row'><span class='rank'>4</span><div class='main'><div class='nm'>東京エレクトロン<span class='tk'>8035.T</span></div><div class='stats'><span>終値 <b>12,445</b>円</span><span class=''>RSI <b>63</b></span><span>25日乖離 <b>+13.0%</b></span><span>60日 <b>-11.7%</b></span></div><div class='bar'><i style='width:83%'></i></div></div><span class='score'>-5.07</span></div><div class='row'><span class='rank'>5</span><div class='main'><div class='nm'>KOKUSAI ELECTRIC<span class='tk'>6525.T</span></div><div class='stats'><span>終値 <b>10,090</b>円</span><span class=''>RSI <b>61</b></span><span>25日乖離 <b>+11.2%</b></span><span>60日 <b>-6.6%</b></span></div><div class='bar'><i style='width:77%'></i></div></div><span class='score'>-4.72</span></div><div class='row'><span class='rank'>6</span><div class='main'><div class='nm'>SUMCO<span class='tk'>3436.T</span></div><div class='stats'><span>終値 <b>3,426</b>円</span><span class=''>RSI <b>53</b></span><span>25日乖離 <b>+6.7%</b></span><span>60日 <b>-34.7%</b></span></div><div class='bar'><i style='width:63%'></i></div></div><span class='score'>-3.85</span></div><div class='row'><span class='rank'>7</span><div class='main'><div class='nm'>三井金属<span class='tk'>5706.T</span></div><div class='stats'><span>終値 <b>2,659</b>円</span><span class=''>RSI <b>58</b></span><span>25日乖離 <b>+12.3%</b></span><span>60日 <b>-22.4%</b></span></div><div class='bar'><i style='width:62%'></i></div></div><span class='score'>-3.79</span></div><div class='row'><span class='rank'>8</span><div class='main'><div class='nm'>荏原製作所<span class='tk'>6361.T</span></div><div class='stats'><span>終値 <b>4,785</b>円</span><span class=''>RSI <b>54</b></span><span>25日乖離 <b>+6.0%</b></span><span>60日 <b>-21.9%</b></span></div><div class='bar'><i style='width:57%'></i></div></div><span class='score'>-3.50</span></div><div class='row'><span class='rank'>9</span><div class='main'><div class='nm'>ソシオネクスト<span class='tk'>6526.T</span></div><div class='stats'><span>終値 <b>2,110</b>円</span><span class=''>RSI <b>51</b></span><span>25日乖離 <b>+3.7%</b></span><span>60日 <b>-25.1%</b></span></div><div class='bar'><i style='width:55%'></i></div></div><span class='score'>-3.41</span></div><div class='row'><span class='rank'>10</span><div class='main'><div class='nm'>日本電気硝子<span class='tk'>5214.T</span></div><div class='stats'><span>終値 <b>5,217</b>円</span><span class=''>RSI <b>61</b></span><span>25日乖離 <b>+6.2%</b></span><span>60日 <b>-12.0%</b></span></div><div class='bar'><i style='width:52%'></i></div></div><span class='score'>-3.19</span></div></section>
+</div>
+<p class="disc">※本レポートは機械的なスクリーニング結果であり、投資助言ではありません。売買の判断はご自身の責任で行ってください。<br>
+スコアはテクニカル指標とニュースセンチメントの合成値。バーの長さはスコアの相対的な大きさ、
+「売られすぎ/買われすぎ」はRSI 30以下/70以上を示します。</p>
+</div></body></html>
