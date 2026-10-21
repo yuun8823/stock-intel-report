@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>株式デイリーレポート</title>
+<style>
+:root{color-scheme:light dark;
+ --bg:#f6f5f0;--card:#fffefb;--text:#26251f;--muted:#716f64;--line:#e8e6dc;
+ --chip:#efede4;--chip-text:#716f64;
+ --buy:#0e6e55;--buy-soft:#e3f2ea;--sell:#a8322d;--sell-soft:#f9e9e7}
+@media(prefers-color-scheme:dark){:root{
+ --bg:#1b1b18;--card:#252521;--text:#eceade;--muted:#a3a093;--line:#39382f;
+ --chip:#32312a;--chip-text:#a3a093;
+ --buy:#63c9a4;--buy-soft:#123a2e;--sell:#f0948c;--sell-soft:#44201c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.6;
+ font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",system-ui,sans-serif;
+ -webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:22px 16px 48px}
+header h1{font-size:19px;font-weight:600;margin:0;letter-spacing:.02em}
+.meta{color:var(--muted);font-size:12px;margin:4px 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+ padding:16px 16px 10px;margin:0 0 14px}
+.ai{padding-bottom:14px}
+.ai h2{font-size:13px;color:var(--muted);font-weight:600;margin:0 0 4px}
+.ai p{font-size:13.5px;margin:0 0 14px}
+.ai p:last-child{margin-bottom:2px}
+.sec-h{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+.sec-h h2{font-size:16px;font-weight:600;margin:0}
+.sec-h .n{font-size:11.5px;color:var(--muted)}
+.buy .sec-h h2{color:var(--buy)}
+.sell .sec-h h2{color:var(--sell)}
+.row{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.rank{flex:none;width:26px;height:26px;margin-top:1px;border-radius:8px;
+ background:var(--chip);color:var(--chip-text);font-size:12.5px;font-weight:600;
+ display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.buy .top .rank{background:var(--buy-soft);color:var(--buy)}
+.sell .top .rank{background:var(--sell-soft);color:var(--sell)}
+.main{flex:1;min-width:0}
+.nm{font-size:14.5px;font-weight:600;line-height:1.35;
+ display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.tk{font-size:11px;color:var(--muted);font-weight:400;font-variant-numeric:tabular-nums}
+.tag{font-size:10.5px;font-weight:500;padding:1.5px 7px;border-radius:999px;
+ background:var(--chip);color:var(--chip-text)}
+.tag.up{background:var(--buy-soft);color:var(--buy)}
+.tag.down{background:var(--sell-soft);color:var(--sell)}
+.stats{font-size:12px;color:var(--muted);margin-top:3px;
+ display:flex;flex-wrap:wrap;gap:2px 12px;font-variant-numeric:tabular-nums}
+.stats b{font-weight:600;color:var(--text)}
+.stats .lo b{color:var(--buy)}
+.stats .hi b{color:var(--sell)}
+.bar{height:3px;border-radius:2px;background:var(--chip);margin-top:7px;overflow:hidden}
+.bar i{display:block;height:100%}
+.buy .bar i{background:var(--buy)}
+.sell .bar i{background:var(--sell)}
+.score{flex:none;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums;
+ padding:3px 9px;border-radius:8px;margin-top:4px}
+.buy .score{background:var(--buy-soft);color:var(--buy)}
+.sell .score{background:var(--sell-soft);color:var(--sell)}
+.empty{color:var(--muted);font-size:13px;padding:10px 0 14px}
+.help{padding:0}
+.help summary{list-style:none;cursor:pointer;padding:13px 16px;
+ font-size:13px;font-weight:600;color:var(--muted);
+ display:flex;align-items:center;gap:8px;-webkit-tap-highlight-color:transparent}
+.help summary::-webkit-details-marker{display:none}
+.help summary::after{content:"＋";margin-left:auto;font-weight:400;color:var(--muted)}
+.help[open] summary::after{content:"－"}
+.help .body{padding:0 16px 8px;border-top:1px solid var(--line)}
+.help dl{margin:10px 0}
+.help dt{font-size:12.5px;font-weight:600;margin-top:10px}
+.help dt:first-child{margin-top:0}
+.help dd{margin:1px 0 0;font-size:12px;color:var(--muted);line-height:1.7}
+.help dd b{color:var(--text);font-weight:600}
+.disc{color:var(--muted);font-size:11px;line-height:1.8;margin-top:20px}
+@media(min-width:880px){
+ .wrap{max-width:1000px}
+ .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+ .cols .card{margin:0}}
+</style></head><body><div class="wrap">
+<header><h1>株式デイリーレポート</h1><p class="meta">更新 2026年10月21日 21:07 JST・株価は 2026-10-21 終値基準・対象 225銘柄・毎営業日 大引け後に自動更新</p></header>
+
+<details class="card help">
+<summary>指標の見方</summary>
+<div class="body"><dl>
+<dt>スコア</dt>
+<dd>下の4指標とニュースの好悪材料を合成した総合点。全銘柄の平均を0として、
+<b>プラスが大きいほど買い寄り、マイナスが大きいほど売り寄り</b>のシグナルです。
+行の下の細いバーはスコアの相対的な大きさを表します。</dd>
+<dt>終値</dt>
+<dd>直近営業日の取引終了時点の株価（円）。</dd>
+<dt>RSI</dt>
+<dd>直近14日間の値動きから「買われすぎ・売られすぎ」を0〜100で示す指標。
+<b>30以下は売られすぎ（反発期待）、70以上は買われすぎ（反落警戒）</b>の目安です。</dd>
+<dt>25日乖離</dt>
+<dd>株価が25日移動平均線（約1ヶ月の平均価格）からどれだけ離れているか。
+<b>マイナスは平均より安い状態</b>で、行きすぎた下落は戻りやすいとされます（逆張りの考え方）。</dd>
+<dt>60日</dt>
+<dd>60営業日（約3ヶ月）前と比べた株価の騰落率。<b>プラスは上昇トレンド</b>を示し、
+勢いが続きやすいとされます（順張りの考え方）。</dd>
+<dt>タグ</dt>
+<dd>「売られすぎ」「買われすぎ」はRSIが30以下/70以上のとき、
+「出来高急増」は直近5日の売買量が普段（25日平均）の1.8倍以上のとき、
+「好材料/悪材料」はニュースのAI分析でプラス/マイナスの評価が付いたときに表示されます。
+数字は-1.0（強い悪材料）〜+1.0（強い好材料）です。</dd>
+</dl></div></details>
+<div class="cols">
+<section class='card buy'><div class='sec-h'><h2>買い目候補</h2><span class='n'>TOP10</span></div><div class='row top'><span class='rank'>1</span><div class='main'><div class='nm'>オリンパス<span class='tk'>7733.T</span><span class='tag up'>売られすぎ</span></div><div class='stats'><span>終値 <b>1,698</b>円</span><span class='lo'>RSI <b>29</b></span><span>25日乖離 <b>-12.0%</b></span><span>60日 <b>-1.6%</b></span></div><div class='bar'><i style='width:100%'></i></div></div><span class='score'>+4.46</span></div><div class='row top'><span class='rank'>2</span><div class='main'><div class='nm'>ローム<span class='tk'>6963.T</span></div><div class='stats'><span>終値 <b>3,958</b>円</span><span class=''>RSI <b>32</b></span><span>25日乖離 <b>-15.5%</b></span><span>60日 <b>-17.3%</b></span></div><div class='bar'><i style='width:81%'></i></div></div><span class='score'>+3.63</span></div><div class='row top'><span class='rank'>3</span><div class='main'><div class='nm'>住友金属鉱山<span class='tk'>5713.T</span></div><div class='stats'><span>終値 <b>8,367</b>円</span><span class=''>RSI <b>35</b></span><span>25日乖離 <b>-10.4%</b></span><span>60日 <b>+12.5%</b></span></div><div class='bar'><i style='width:79%'></i></div></div><span class='score'>+3.52</span></div><div class='row'><span class='rank'>4</span><div class='main'><div class='nm'>パナソニック ホールディングス<span class='tk'>6752.T</span></div><div class='stats'><span>終値 <b>3,905</b>円</span><span class=''>RSI <b>35</b></span><span>25日乖離 <b>-9.8%</b></span><span>60日 <b>-4.1%</b></span></div><div class='bar'><i style='width:76%'></i></div></div><span class='score'>+3.39</span></div><div class='row'><span class='rank'>5</span><div class='main'><div class='nm'>ソフトバンクグループ<span class='tk'>9984.T</span></div><div class='stats'><span>終値 <b>4,622</b>円</span><span class=''>RSI <b>33</b></span><span>25日乖離 <b>-21.4%</b></span><span>60日 <b>-18.9%</b></span></div><div class='bar'><i style='width:73%'></i></div></div><span class='score'>+3.28</span></div><div class='row'><span class='rank'>6</span><div class='main'><div class='nm'>しずおかフィナンシャルグループ<span class='tk'>5831.T</span></div><div class='stats'><span>終値 <b>3,076</b>円</span><span class=''>RSI <b>33</b></span><span>25日乖離 <b>-10.1%</b></span><span>60日 <b>-6.5%</b></span></div><div class='bar'><i style='width:72%'></i></div></div><span class='score'>+3.23</span></div><div class='row'><span class='rank'>7</span><div class='main'><div class='nm'>イビデン<span class='tk'>4062.T</span></div><div class='stats'><span>終値 <b>9,500</b>円</span><span class=''>RSI <b>41</b></span><span>25日乖離 <b>-10.7%</b></span><span>60日 <b>+4.2%</b></span></div><div class='bar'><i style='width:71%'></i></div></div><span class='score'>+3.17</span></div><div class='row'><span class='rank'>8</span><div class='main'><div class='nm'>オムロン<span class='tk'>6645.T</span></div><div class='stats'><span>終値 <b>5,693</b>円</span><span class=''>RSI <b>32</b></span><span>25日乖離 <b>-8.2%</b></span><span>60日 <b>+4.2%</b></span></div><div class='bar'><i style='width:70%'></i></div></div><span class='score'>+3.13</span></div><div class='row'><span class='rank'>9</span><div class='main'><div class='nm'>古河電気工業<span class='tk'>5801.T</span></div><div class='stats'><span>終値 <b>3,200</b>円</span><span class=''>RSI <b>34</b></span><span>25日乖離 <b>-16.9%</b></span><span>60日 <b>-9.0%</b></span></div><div class='bar'><i style='width:65%'></i></div></div><span class='score'>+2.91</span></div><div class='row'><span class='rank'>10</span><div class='main'><div class='nm'>三菱マテリアル<span class='tk'>5711.T</span></div><div class='stats'><span>終値 <b>4,476</b>円</span><span class=''>RSI <b>35</b></span><span>25日乖離 <b>-8.8%</b></span><span>60日 <b>+7.7%</b></span></div><div class='bar'><i style='width:64%'></i></div></div><span class='score'>+2.85</span></div></section>
+<section class='card sell'><div class='sec-h'><h2>売り目候補</h2><span class='n'>TOP10</span></div><div class='row top'><span class='rank'>1</span><div class='main'><div class='nm'>HOYA<span class='tk'>7741.T</span><span class='tag down'>買われすぎ</span></div><div class='stats'><span>終値 <b>26,505</b>円</span><span class='hi'>RSI <b>70</b></span><span>25日乖離 <b>+9.5%</b></span><span>60日 <b>+5.8%</b></span></div><div class='bar'><i style='width:100%'></i></div></div><span class='score'>-2.79</span></div><div class='row top'><span class='rank'>2</span><div class='main'><div class='nm'>東日本旅客鉄道<span class='tk'>9020.T</span></div><div class='stats'><span>終値 <b>3,578</b>円</span><span class=''>RSI <b>67</b></span><span>25日乖離 <b>+4.7%</b></span><span>60日 <b>+0.1%</b></span></div><div class='bar'><i style='width:93%'></i></div></div><span class='score'>-2.59</span></div><div class='row top'><span class='rank'>3</span><div class='main'><div class='nm'>三越伊勢丹ホールディングス<span class='tk'>3099.T</span></div><div class='stats'><span>終値 <b>1,750</b>円</span><span class=''>RSI <b>60</b></span><span>25日乖離 <b>+5.0%</b></span><span>60日 <b>-6.8%</b></span></div><div class='bar'><i style='width:92%'></i></div></div><span class='score'>-2.57</span></div><div class='row'><span class='rank'>4</span><div class='main'><div class='nm'>サイバーエージェント<span class='tk'>4751.T</span></div><div class='stats'><span>終値 <b>1,328</b>円</span><span class=''>RSI <b>65</b></span><span>25日乖離 <b>+6.1%</b></span><span>60日 <b>-4.4%</b></span></div><div class='bar'><i style='width:92%'></i></div></div><span class='score'>-2.56</span></div><div class='row'><span class='rank'>5</span><div class='main'><div class='nm'>野村総合研究所<span class='tk'>4307.T</span><span class='tag down'>買われすぎ</span></div><div class='stats'><span>終値 <b>5,991</b>円</span><span class='hi'>RSI <b>76</b></span><span>25日乖離 <b>+13.1%</b></span><span>60日 <b>+21.3%</b></span></div><div class='bar'><i style='width:91%'></i></div></div><span class='score'>-2.54</span></div><div class='row'><span class='rank'>6</span><div class='main'><div class='nm'>パン・パシフィック・インターナショナルホールディングス<span class='tk'>7532.T</span></div><div class='stats'><span>終値 <b>744</b>円</span><span class=''>RSI <b>55</b></span><span>25日乖離 <b>+4.1%</b></span><span>60日 <b>-14.2%</b></span></div><div class='bar'><i style='width:88%'></i></div></div><span class='score'>-2.45</span></div><div class='row'><span class='rank'>7</span><div class='main'><div class='nm'>セコム<span class='tk'>9735.T</span></div><div class='stats'><span>終値 <b>6,699</b>円</span><span class=''>RSI <b>69</b></span><span>25日乖離 <b>+4.9%</b></span><span>60日 <b>+0.4%</b></span></div><div class='bar'><i style='width:86%'></i></div></div><span class='score'>-2.40</span></div><div class='row'><span class='rank'>8</span><div class='main'><div class='nm'>大塚ホールディングス<span class='tk'>4578.T</span></div><div class='stats'><span>終値 <b>12,500</b>円</span><span class=''>RSI <b>68</b></span><span>25日乖離 <b>+8.2%</b></span><span>60日 <b>+13.9%</b></span></div><div class='bar'><i style='width:85%'></i></div></div><span class='score'>-2.37</span></div><div class='row'><span class='rank'>9</span><div class='main'><div class='nm'>東京海上ホールディングス<span class='tk'>8766.T</span><span class='tag down'>買われすぎ</span></div><div class='stats'><span>終値 <b>559</b>円</span><span class='hi'>RSI <b>72</b></span><span>25日乖離 <b>+14.0%</b></span><span>60日 <b>+36.1%</b></span></div><div class='bar'><i style='width:83%'></i></div></div><span class='score'>-2.31</span></div><div class='row'><span class='rank'>10</span><div class='main'><div class='nm'>サッポロビール<span class='tk'>2501.T</span></div><div class='stats'><span>終値 <b>1,954</b>円</span><span class=''>RSI <b>59</b></span><span>25日乖離 <b>+4.4%</b></span><span>60日 <b>-3.1%</b></span></div><div class='bar'><i style='width:83%'></i></div></div><span class='score'>-2.31</span></div></section>
+</div>
+<p class="disc">※本レポートは機械的なスクリーニング結果であり、投資助言ではありません。売買の判断はご自身の責任で行ってください。<br>
+各数値の意味は上部「指標の見方」をご覧ください。</p>
+</div></body></html>
